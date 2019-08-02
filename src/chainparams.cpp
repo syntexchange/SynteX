@@ -54,11 +54,11 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0x00000b9075773a3874845d2226fe31219d68a7908e66f1bbd03cec853a2ef122"));
+    (0, uint256("0x000002ce15f51d612762b48c55375c8e18d025958193a61b9a71599e378c159c"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1564592295, // * UNIX timestamp of last checkpoint block
+    1564672005, // * UNIX timestamp of last checkpoint block
     0,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
@@ -97,7 +97,7 @@ public:
         pchMessageStart[1] = 0xde;
         pchMessageStart[2] = 0x14;
         pchMessageStart[3] = 0xb2;
-        vAlertPubKey = ParseHex("041116f1551c2367f81c0ecb4d45d088298442887645a314dfcba3039401872473b0200e69d9679a0d7cc307fb9aaaacafb0cebc18050ce7c995fa19c6accc8415");
+        vAlertPubKey = ParseHex("041116f1551c2367f81c0ecb54d4d088298442887645a314dfcba3039401872473b0200e69d9679a0d7cc307fb9aaaacafb0cebc18050ce7c995fa19c6accc8415");
         nDefaultPort = 9336;
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         nSubsidyHalvingInterval = 1050000;
@@ -113,7 +113,7 @@ public:
         nMaxMoneyOut = 22000000 * COIN;
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 200;
+        nLastPOWBlock = 250;
         nModifierUpdateBlock = 1; // we use the version 2 for SYX
         const char* pszTimestamp = "Update: SynteX born today.";
         CMutableTransaction txNew;
@@ -121,21 +121,24 @@ public:
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 0 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("0425a8143f86ad8ac63791fbbdb8e0b91a8da88c8c693a95f6c2c13c063ea790f7960b8025a9047a7bc671d5cfe707a2dd2e13b86182e1064a0eea7bf863636363") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("0425a8143f86ad8ac61973fbbdb8e0b91a8da88c8c693a95f6c2c13c063ea790f7960b8025a9047a7bc671d5cfe707a2dd2e13b86182e1064a0eea7bf863636363") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1564592295;
+        genesis.nTime = 1564672005;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 688485;
+        genesis.nNonce = 702322;
+
+
+        
 
 	    hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x00000b9075773a3874845d2226fe31219d68a7908e66f1bbd03cec853a2ef122"));
-        assert(genesis.hashMerkleRoot == uint256("0x5bb372a0187336a65dc7b937a88a9d78d02593fbe01db74bac88bd7aa831486e"));
+        assert(hashGenesisBlock == uint256("0x000002ce15f51d612762b48c55375c8e18d025958193a61b9a71599e378c159c"));
+        assert(genesis.hashMerkleRoot == uint256("0xb1a19ca43885ee4f52f989d8cbc140688a8ef315b5326e2064730aadb3cdeb62"));
         // DNS Seeding
 
-        vSeeds.push_back(CDNSSeedData("35.247.146.155", "35.239.162.107"));
+        vSeeds.push_back(CDNSSeedData("35.187.253.24", "35.187.253.24"));
 
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 75);
